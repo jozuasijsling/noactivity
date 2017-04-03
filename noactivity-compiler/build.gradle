@@ -1,0 +1,15 @@
+import org.gradle.internal.jvm.Jvm
+
+apply plugin: 'java'
+
+sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+targetCompatibility = rootProject.ext.targetCompatibilityVersion
+
+dependencies {
+  compile project(':noactivity-annotations')
+  compile project(':noactivity')
+  compile deps.autocommon
+  compile deps.javapoet
+  compileOnly deps.autoservice
+  compileOnly files(Jvm.current().getToolsJar())
+}
